@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button, Input } from "@mui/material";
+import { redirect } from "next/navigation";
 
 export default function RoadTripPage() {
   const [roadTripCode, setRoadTripCode] = useState<string | null>(null);
@@ -17,6 +18,7 @@ export default function RoadTripPage() {
       alert(`Joining road trip with code: ${joinCode}`);
       console.log(`Here is the join code: ${joinCode}`);
       setJoinCode(joinCode);
+      redirect("/home");
     }
   };
 
