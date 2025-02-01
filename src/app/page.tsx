@@ -23,7 +23,7 @@ export default function RoadTripPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen space-y-6">
+    <div className="flex flex-col items-center justify-center h-screen space-y-6" style={{ backgroundColor: '#f2fae9' }}>
       {!roadTripCode ? (
         <div className="flex flex-col items-center space-y-4">
           <h1 className="text-2xl font-bold">My Cows:</h1>
