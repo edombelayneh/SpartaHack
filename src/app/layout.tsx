@@ -1,4 +1,4 @@
-// import { ConvexClientProvider } from "./convex-client-provider";
+import { ConvexClientProvider } from "./convex-client-provider";
 import "./globals.css";
 
 export const metadata = {
@@ -18,7 +18,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet" />
       </head>
-      <body>{children}</body>
+      <body>
+        <ConvexClientProvider>{children}</ConvexClientProvider>
+      </body>
     </html>
   );
 }
