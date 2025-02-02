@@ -151,11 +151,12 @@ const ProfilePage: React.FC = () => {
           )}
         </Grid>
       </div>
-      <div className="w-full max-w-md mt-5">
+      <div className="w-full max-w-md mt-5" style={{ textAlign: "center" }}>
         <Tabs
           value={tabValue}
           onChange={handleTabChange}
           aria-label="basic tabs example"
+          centered
         >
           <Tab label="My Cows" />
           <Tab label="Road Hazards" />
@@ -164,14 +165,14 @@ const ProfilePage: React.FC = () => {
         {/* Tab Content */}
         {tabValue === 0 && (
           <div className="mt-3 text-center">
-            <h2 className="text-xl font-bold">My Cows</h2>
-            <MyCows></MyCows>
+        <h2 className="text-xl font-bold">My Cows</h2>
+        <MyCows></MyCows>
           </div>
         )}
         {tabValue === 1 && (
           <div className="mt-3 text-center">
-            <h2 className="text-xl font-bold">Road Hazards</h2>
-            <RoadHazards></RoadHazards>
+        <h2 className="text-xl font-bold">Road Hazards</h2>
+        <RoadHazards></RoadHazards>
           </div>
         )}
       </div>
