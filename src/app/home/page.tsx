@@ -4,7 +4,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import PersonIcon from "@mui/icons-material/Person";
 import Image from "next/image";
-import React from "react";
+import { Widgets } from "@mui/icons-material";
+// import CowIcon from "../components/cowIcon";
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -15,32 +16,42 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gray-900 flex items-center justify-center">
+    <div style={{overflow: 'hidden'}}>
+      <div style={{height : '100vh', width: '100vw', margin: 0, padding: 0, overflow: 'hidden'}} id="homePage" >
+      {/* Grid Layout. Hold Car and Cows */}
+      <div className="grid grid-cols-8 grid-rows-6 gap-5 m-5" style={{ overflow: 'hidden', width: "100%", height: "100%", margin: 0, padding: 0 , backgroundImage: "url('/Road.png')", backgroundSize: "100% 100%"}} id="carGrid">
+        {/* Car */}
+        <span className="col-start-2 col-end-8 row-start-2 row-end-6" style={{margin: 0, padding: 0, width: "100%", height: "100%"}} id="car">
+          <Image
+        src="/2seatcar.png"
+        alt="Car"
+        style={{ transform: 'rotate(90deg)', objectFit: "contain" }}
+        fill={true}
+        />
+        </span>
+
+        {/* Clickable Profile Icon in the Center */}
+        {/* <span className="col-start-3 col-end-5 row-start-3 row-end-4" >
+          <CowIcon
+        className="text-black text-4xl cursor-pointer hover:text-gray-400 transition"
+        onClick={redirectProfile}
+        name="Test"
+        size={50}
+        url="/defaultCow.png"
+          />
+        </span> */}
+      </div>
       {/* Settings Icon in Top-Right Corner */}
-      <div className="absolute top-5 right-5 z-10">
-        <SettingsIcon className="text-white text-3xl cursor-pointer hover:text-gray-400 transition" />
-      </div>
+      <span className="absolute top-5 right-5">
+          <SettingsIcon className="text-black text-3xl cursor-pointer hover:text-gray-400 transition" />
+      </span>
 
-      {/* Centered Car Image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <Image
-          src="/2seatcar.png"
-          alt="Car"
-          width={960}
-          height={480}
-          style={{ transform: "rotate(270deg)", maxWidth: "100%", maxHeight: "70vh", height: "auto" }}
-          className="object-contain"
-        />
-      </div>
-
-      {/* Profile & Leaderboard Icons in Bottom-Right Corner */}
-      <div className="absolute bottom-5 right-5 flex space-x-4 z-10">
-        <PersonIcon
-          className="text-white text-4xl cursor-pointer hover:text-gray-400 transition"
-          onClick={redirectProfile}
-        />
-        <LeaderboardIcon className="text-white text-4xl cursor-pointer hover:text-gray-400 transition" />
-      </div>
+      {/* Leaderboard Button in Bottom-Right Corner */}
+      <span className="absolute bottom-5 right-5">
+        <LeaderboardIcon className="text-black text-4xl cursor-pointer hover:text-gray-400 transition" />
+      </span>
+    
+    </div>
     </div>
   );
 };
