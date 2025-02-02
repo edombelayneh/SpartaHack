@@ -14,6 +14,7 @@ export default function Create() {
   const [gameCode, setGameCode] = useState("");
   const [message, setMessage] = useState("");
   const avatar = "/BrownCow.png";
+
   const router = useRouter();
   const redirectProfile = (): void => {
     router.push("/home");
@@ -50,7 +51,7 @@ export default function Create() {
         playerName,
         avatar,
       });
-      setMessage(`Joined game successfully! Player ID: ${result.playerId}`);
+      setMessage(`You joined the game successfully!`);
     } catch (error) {
       console.error(error);
       setMessage(`Error joining game:`);
