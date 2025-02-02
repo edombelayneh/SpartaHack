@@ -63,6 +63,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { usePlayerId } from "../playerId-context-provider";
 
 export default function Join() {
   const router = useRouter();
@@ -77,6 +78,7 @@ export default function Join() {
   const [playerName, setPlayerName] = useState("");
   const [message, setMessage] = useState("");
   const { gameCode: gameCodeToDisplay, setGameCode } = useGameCode(); // Keeps context names
+  const { playerId, setPlayerId } = usePlayerId();
 
   const avatar = "/defaultCow.png";
 
@@ -87,6 +89,7 @@ export default function Join() {
       }
       const result = await joinGameMutation({ gameCode, playerName, avatar });
       setMessage(`Joined game successfully! Player ID: ${result.playerId}`);
+      setPlayerId(result.playerId);
       redirectHome();
     } catch (error) {
       setMessage(`Error: `);

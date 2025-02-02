@@ -1,14 +1,3 @@
-// import { query } from "./_generated/server";
-
-// export const getPlayerCount = query(async ({ db }, { gameCode }) => {
-//     const players = await db
-//       .query("gameTable")
-//       .filter((q) => q.eq(q.field("code"), gameCode))
-//       .collect();
-
-//     return players.length; // Return the number of players in that game
-//   });
-
 import { query } from "./_generated/server";
 import { Id } from "./_generated/dataModel";
 
@@ -67,9 +56,9 @@ export const getPlayers = query(
   }
 );
 
-// export const getPlayerById = query(
-//   async ({ db }, { playerId }: { playerId: Id<"playerTable"> }) => {
-//     const player = await db.get(playerId);
-//     return player || null;
-//   }
-// );
+export const getPlayerById = query(
+  async ({ db }, { playerId }: { playerId: Id<"playerTable"> }) => {
+    const player = await db.get(playerId);
+    return player || null;
+  }
+);
