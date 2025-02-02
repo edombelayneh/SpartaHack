@@ -15,6 +15,7 @@ import {
   Tab,
   Modal,
 } from "@mui/material";
+import MyCows from "./_components/mycows";
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -132,7 +133,7 @@ const ProfilePage: React.FC = () => {
         {tabValue === 0 && (
           <div className="mt-3 text-center">
             <h2 className="text-xl font-bold">My Cows</h2>
-            <p>Here is the information about the cows</p>
+            <MyCows></MyCows>
           </div>
         )}
         {tabValue === 1 && (
