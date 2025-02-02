@@ -21,12 +21,13 @@ export default function Home() {
       </div>
 
       {/* Centered Car Image */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-screen">
         <Image
-          src="/car.png" // Update this with the correct path to your image
+          src="/2seatcar.png" // Update this with the correct path to your image
           alt="Car"
-          width={200} // Adjust size as needed
-          height={200} // Adjust size as needed
+          width={960} // Adjust size as needed
+          height={480} // Adjust size as needed
+          style={{ transform: 'rotate(270deg)', display: 'block', margin: 'auto', width: '100%', height: '100%' }}
           className="object-contain"
         />
 
@@ -36,6 +37,7 @@ export default function Home() {
           onClick={redirectProfile}
         />
       </div>
+      
 
       {/* Leaderboard Button in Bottom-Right Corner */}
       <div className="absolute bottom-5 right-5">
