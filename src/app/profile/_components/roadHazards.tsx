@@ -23,8 +23,13 @@ const RoadHazards: React.FC = () => {
     console.log("Fetched player:", fetchedPlayer);
   }, [fetchedPlayer]);
 
-  const handleCrossingClick = async () => {
+  const handleCrossingClick = () => {
     setIsCrossingOpen(true);
+  };
+
+  const handleCrossingSubmit = async (selectedPointsNum: number) => {
+    handleCloseCrossing();
+    
     if (!fetchedPlayer) {
       console.log("Player not found");
       return;
@@ -33,7 +38,7 @@ const RoadHazards: React.FC = () => {
     try {
       const result = await roadPointChangeMutation({
         playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 1,
+        pointChange: selectedPointsNum,
       });
 
       setMessage(
@@ -49,118 +54,6 @@ const RoadHazards: React.FC = () => {
     }
   };
 
-  const handleDeerCrossingClick = () => {
-    handleCloseCrossing();
-    setPointCount(pointCount + 1);
-    setMessage(
-      `You have updated your point count to ${pointCount} for Deer Crossing`
-    );
-
-    setTimeout(() => {
-      setMessage(null);
-    }, 5000);
-  };
-  const handleBearCrossingClick = async () => {
-    handleCloseCrossing();
-    if (!fetchedPlayer) {
-      console.log("Player not found");
-      return;
-    }
-
-    try {
-      const result = await roadPointChangeMutation({
-        playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 10,
-      });
-
-      setMessage(
-        `You have updated your point count to ${result.roadPointsCount} for Crossing`
-      );
-
-      setTimeout(() => {
-        setMessage(null);
-      }, 5000);
-    } catch (error) {
-      console.error("Failed to update point count:", error);
-      setMessage("Error updating point count");
-    }
-  };
-  const handleFarmCrossingClick = async () => {
-    handleCloseCrossing();
-    if (!fetchedPlayer) {
-      console.log("Player not found");
-      return;
-    }
-
-    try {
-      const result = await roadPointChangeMutation({
-        playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 5,
-      });
-
-      setMessage(
-        `You have updated your point count to ${result.roadPointsCount} for Crossing`
-      );
-
-      setTimeout(() => {
-        setMessage(null);
-      }, 5000);
-    } catch (error) {
-      console.error("Failed to update point count:", error);
-      setMessage("Error updating point count");
-    }
-  };
-  const handleTruckCrossingClick = async () => {
-    handleCloseCrossing();
-    if (!fetchedPlayer) {
-      console.log("Player not found");
-      return;
-    }
-
-    try {
-      const result = await roadPointChangeMutation({
-        playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 3,
-      });
-
-      setMessage(
-        `You have updated your point count to ${result.roadPointsCount} for Crossing`
-      );
-
-      setTimeout(() => {
-        setMessage(null);
-      }, 5000);
-    } catch (error) {
-      console.error("Failed to update point count:", error);
-      setMessage("Error updating point count");
-    }
-  };
-  const handleSnowmobileCrossingClick = async () => {
-    handleCloseCrossing();
-    setIsCrossingOpen(true);
-    if (!fetchedPlayer) {
-      console.log("Player not found");
-      return;
-    }
-
-    try {
-      const result = await roadPointChangeMutation({
-        playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 5,
-      });
-
-      setMessage(
-        `You have updated your point count to ${result.roadPointsCount} for Crossing`
-      );
-
-      setTimeout(() => {
-        setMessage(null);
-      }, 5000);
-    } catch (error) {
-      console.error("Failed to update point count:", error);
-      setMessage("Error updating point count");
-    }
-  };
 
   const handleCurveClick = async () => {
     if (!fetchedPlayer) {
@@ -171,7 +64,7 @@ const RoadHazards: React.FC = () => {
     try {
       const result = await roadPointChangeMutation({
         playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 2,
+        pointChange:2,
       });
 
       setMessage(
@@ -196,7 +89,7 @@ const RoadHazards: React.FC = () => {
     try {
       const result = await roadPointChangeMutation({
         playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 5,
+        pointChange:5,
       });
 
       setMessage(
@@ -221,7 +114,7 @@ const RoadHazards: React.FC = () => {
     try {
       const result = await roadPointChangeMutation({
         playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 10,
+        pointChange:10,
       });
 
       setMessage(
@@ -246,7 +139,7 @@ const RoadHazards: React.FC = () => {
     try {
       const result = await roadPointChangeMutation({
         playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 4,
+        pointChange:4,
       });
 
       setMessage(
@@ -271,7 +164,7 @@ const RoadHazards: React.FC = () => {
     try {
       const result = await roadPointChangeMutation({
         playerId: fetchedPlayer._id,
-        pointChange: fetchedPlayer.roadPoints + 15,
+        pointChange:15,
       });
 
       setMessage(
@@ -428,7 +321,7 @@ const RoadHazards: React.FC = () => {
               }}
             >
               <Icon
-                onClick={handleDeerCrossingClick}
+                onClick={() => handleCrossingSubmit(1)}
                 style={{ fontSize: "64px" }}
               >
                 <img
@@ -446,7 +339,7 @@ const RoadHazards: React.FC = () => {
               }}
             >
               <Icon
-                onClick={handleTruckCrossingClick}
+                onClick={() => handleCrossingSubmit(3)}
                 style={{ fontSize: "64px" }}
               >
                 <img
@@ -468,7 +361,7 @@ const RoadHazards: React.FC = () => {
               }}
             >
               <Icon
-                onClick={handleFarmCrossingClick}
+                onClick={() => handleCrossingSubmit(5)}
                 style={{ fontSize: "64px" }}
               >
                 <img
@@ -486,7 +379,7 @@ const RoadHazards: React.FC = () => {
               }}
             >
               <Icon
-                onClick={handleBearCrossingClick}
+                onClick={() => handleCrossingSubmit(10)}
                 style={{ fontSize: "64px" }}
               >
                 <img
@@ -504,7 +397,7 @@ const RoadHazards: React.FC = () => {
               }}
             >
               <Icon
-                onClick={handleSnowmobileCrossingClick}
+                onClick={() => handleCrossingSubmit(5)}
                 style={{ fontSize: "64px" }}
               >
                 <img
