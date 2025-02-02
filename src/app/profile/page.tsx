@@ -15,6 +15,7 @@ import {
   Tab,
   Modal,
 } from "@mui/material";
+import MyCows from "./_components/mycows";
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -90,7 +91,11 @@ const ProfilePage: React.FC = () => {
             <Card sx={{ p: 1 }}>
               <CardContent>
                 <Typography variant="body2">
-                  <PetsIcon />
+                  <img
+                    src="/cowside.png"
+                    alt="cow"
+                    style={{ width: "40px", height: "40px" }}
+                  />
                   {cowCount}
                 </Typography>
               </CardContent>
@@ -102,7 +107,11 @@ const ProfilePage: React.FC = () => {
             <Card sx={{ p: 1 }}>
               <CardContent>
                 <Typography variant="body2">
-                  <LunchDiningIcon />
+                <img
+                    src="/burger.png"
+                    alt="hamburger"
+                    style={{ width: "40px", height: "40px" }}
+                  />
                   {hamBurgerCount}
                 </Typography>
               </CardContent>
@@ -124,7 +133,7 @@ const ProfilePage: React.FC = () => {
         {tabValue === 0 && (
           <div className="mt-3 text-center">
             <h2 className="text-xl font-bold">My Cows</h2>
-            <p>Here is the information about the cows</p>
+            <MyCows></MyCows>
           </div>
         )}
         {tabValue === 1 && (
