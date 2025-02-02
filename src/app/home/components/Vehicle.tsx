@@ -73,7 +73,7 @@ const Vehicle: React.FC<VehicleProps> = ({ cowNum }) => {
             }}
           >
             <CowIcon
-              onClick={() => handleProfileClick(player._id)}
+              onClick={() => handleProfileClick()}
               name={player.name}
               size={80}
               url={player.avatar || "/defaultCow.png"}
