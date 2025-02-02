@@ -14,8 +14,6 @@ export default function Create() {
   const [gameCode, setGameCode] = useState("");
   const [message, setMessage] = useState("");
   const avatar = "/BrownCow.png";
-  const [inGame, setInGame] = useState(false);
-  const avatar = "../../public/defaultCow.png";
   const router = useRouter();
   const redirectProfile = (): void => {
     router.push("/home");
@@ -53,8 +51,6 @@ export default function Create() {
         avatar,
       });
       setMessage(`Joined game successfully! Player ID: ${result.playerId}`);
-      setInGame(true);
-      console.log("InGame state updated:", inGame);
     } catch (error) {
       console.error(error);
       setMessage(`Error joining game:`);
@@ -80,14 +76,12 @@ export default function Create() {
         <p className="mt-4 text-lg font-bold">Game Code: {gameCode}</p>
       )}
       {message && <p className="mt-4">{message}</p>}
-      {inGame && (
-        <Button
-          onClick={redirectProfile}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-        >
-          Continue to Game
-        </Button>
-      )}
+      <Button
+        onClick={redirectProfile}
+        className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+      >
+        Continue to Game
+      </Button>
     </div>
   );
 }

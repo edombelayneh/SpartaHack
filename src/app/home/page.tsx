@@ -5,6 +5,31 @@ import { useRouter } from "next/navigation";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import Vehicle from "./components/Vehicle";
+import { useGameCode } from "../game-context-provider";
+
+// Component to display current game code
+const CurrentCode: React.FC = () => {
+  const { gameCode } = useGameCode();
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "8%",
+        left: "20%",
+        transform: "translate(-50%, -50%)",
+        fontSize: "12px",
+        fontWeight: "bold",
+        color: "white",
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        padding: "8px 16px",
+        borderRadius: "8px",
+      }}
+    >
+      {gameCode ? `Game Code: ${gameCode}` : "No Game Code"}
+    </div>
+  );
+};
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -28,6 +53,8 @@ const Home: React.FC = () => {
         }}
         id="homePage"
       >
+        {/* Display the Game Code at the Center-Top */}
+        <CurrentCode />
         {/* Button on the center to end game */}
         <div
           style={{
