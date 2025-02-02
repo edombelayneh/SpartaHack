@@ -16,7 +16,6 @@ import {
   Modal,
 } from "@mui/material";
 
-
 const ProfilePage: React.FC = () => {
   const router = useRouter();
   const [cowCount, setCowCount] = React.useState(200);
@@ -73,7 +72,7 @@ const ProfilePage: React.FC = () => {
         >
           <Avatar
             alt="Profile Picture"
-            src="/path/to/profile-picture.jpg"
+            src=""
             style={{ width: "100px", height: "100px" }}
           />
           <h2>Username</h2>
@@ -152,22 +151,46 @@ const ProfilePage: React.FC = () => {
           }}
         >
           <h1>Game Rules</h1>
-            <h3>My Cows Rules</h3>
-            <h4>"My Cows!"</h4>
-            <p>When a player sees a field of cows and exclaims "my cows!", said player gets an estimation of the number of cows in that field.</p>
-            <h4>"Marry my Cows"</h4>
-            <p>When a player sees a church and exclaims "marry my Cows," said player's cow count doubles.</p>
-            <h4>"Bury your Cows"</h4>
-            <p>When a player sees a cemetery, exclaims "bury your cows," all other players' cows die.</p>
-            <h4>"Mad Cow Disease"</h4>
-            <p>When a player sees a hospital and exclaims "mad cow Disease," all other players lose half their cows.</p>
-            <h4>"Cash in my Cows"</h4>
-            <p>When a player sees a McDonald's and exclaims "cash in my Cows," said player's cows are now burgers.</p>
-            <h4>"Discount cows"</h4>
-            <p>When a player sees a Dollar General and exclaims “discount cows,” all other players give the caller 25% of their cows.</p>
-            <p>At the end of the trip, the player with the most cows and hamburgers wins the cow game</p>
+          <h3>My Cows Rules</h3>
+          <h4>"My Cows!"</h4>
+          <p>
+            When a player sees a field of cows and exclaims "my cows!", said
+            player gets an estimation of the number of cows in that field.
+          </p>
+          <h4>"Marry my Cows"</h4>
+          <p>
+            When a player sees a church and exclaims "marry my Cows," said
+            player's cow count doubles.
+          </p>
+          <h4>"Bury your Cows"</h4>
+          <p>
+            When a player sees a cemetery, exclaims "bury your cows," all other
+            players' cows die.
+          </p>
+          <h4>"Mad Cow Disease"</h4>
+          <p>
+            When a player sees a hospital and exclaims "mad cow Disease," all
+            other players lose half their cows.
+          </p>
+          <h4>"Cash in my Cows"</h4>
+          <p>
+            When a player sees a McDonald's and exclaims "cash in my Cows," said
+            player's cows are now burgers.
+          </p>
+          <h4>"Discount cows"</h4>
+          <p>
+            When a player sees a Dollar General and exclaims “discount cows,”
+            all other players give the caller 25% of their cows.
+          </p>
+          <p>
+            At the end of the trip, the player with the most cows and hamburgers
+            wins the cow game
+          </p>
           <h3>Road Hazards Rules</h3>
-            <p>At the end of the trip, the player with the most safety points wins the road hazards game </p>
+          <p>
+            At the end of the trip, the player with the most safety points wins
+            the road hazards game{" "}
+          </p>
           <h3>Can you win both?</h3>
           <Button onClick={handleCloseHelp} variant="contained" color="primary">
             Close
