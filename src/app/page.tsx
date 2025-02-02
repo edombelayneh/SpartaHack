@@ -3,8 +3,7 @@ import { useState } from "react";
 import { Button, Input } from "@mui/material";
 import { redirect } from "next/navigation";
 import { useMutation } from "convex/react";
-import { createGame } from "../../convex/functions";
-import { api } from "../../convex/_generated/api"; // ✅ Correct import
+import { api } from "../../convex/_generated/api";
 
 export default function RoadTripPage() {
   const createGameMutation = useMutation(api.functions.createGame);
