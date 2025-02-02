@@ -14,10 +14,13 @@ import {
   Modal,
 } from "@mui/material";
 import MyCows from "./_components/mycows";
+
 import { getPlayerById } from "../../../convex/secondaryFunctions";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { usePlayerId } from "../playerId-context-provider";
+import RoadHazards from "./_components/roadHazards";
+
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -147,7 +150,7 @@ const ProfilePage: React.FC = () => {
         {tabValue === 1 && (
           <div className="mt-3 text-center">
             <h2 className="text-xl font-bold">Road Hazards</h2>
-            <p>Here is the information about the road hazards</p>
+            <RoadHazards></RoadHazards>
           </div>
         )}
       </div>
