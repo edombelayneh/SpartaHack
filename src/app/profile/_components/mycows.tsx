@@ -4,7 +4,6 @@
 // // once a icon is clicked, it runs a function to update the user's cow count and then display a text message about the update
 // // after 5 seconds, the text message will disappear and the user can interact with the icons again
 
-
 import { Icon, Modal } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { api } from "../../../../convex/_generated/api";
@@ -14,7 +13,7 @@ import { usePlayerId } from "../../playerId-context-provider";
 const MyCows: React.FC = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [isMyCowsModalOpen, setIsMyCowsModalOpen] = useState(false);
-//   const [isWheelsModalOpen, setIsWheelssModalOpen] = useState(false);
+  //   const [isWheelsModalOpen, setIsWheelssModalOpen] = useState(false);
   const { playerId } = usePlayerId();
 
   // ✅ Fetch player data
@@ -33,13 +32,10 @@ const MyCows: React.FC = () => {
     console.log("Fetched player:", fetchedPlayer);
   }, [fetchedPlayer]);
 
-
   const handleMyCowClick = () => {
     setIsMyCowsModalOpen(true);
     console.log("My Cows clicked. Open modal");
   };
-
-
 
   const handleMyCowSubmit = async (selectedCowsNumber: number) => {
     console.log("submitted", selectedCowsNumber);
@@ -359,9 +355,9 @@ const MyCows: React.FC = () => {
         </div>
         </div>
         </div>
-        </Modal> 
-        {/* end of myCowsModal */}
-        {/* <Modal 
+      </Modal>
+      {/* end of myCowsModal */}
+      {/* <Modal 
         id="wheelsModal"
         open={isWheelsModalOpen} 
         onClose={() => setIsWheelssModalOpen(false)}

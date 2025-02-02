@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { usePlayerId } from "../playerId-context-provider";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function Join() {
   const router = useRouter();
@@ -41,8 +40,19 @@ export default function Join() {
   };
 
   return (
-    <div className="flex flex-col items-center p-10">
-      <ArrowBackIcon></ArrowBackIcon>
+    <div
+      className="flex flex-col items-center p-10"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        margin: 0,
+        padding: 0,
+        overflow: "hidden",
+        backgroundImage: "url('/CowWave.png')",
+        backgroundSize: "100% 100%",
+      }}
+      id="joinPage"
+    >
       <input
         type="text"
         placeholder="Enter Game Code"

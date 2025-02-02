@@ -32,7 +32,7 @@ const CurrentCode: React.FC = () => {
 
 const Home: React.FC = () => {
   const router = useRouter();
-
+  
   // Navigate to profile page
   const redirectEndPage = () => {
     router.push("/endPage");
