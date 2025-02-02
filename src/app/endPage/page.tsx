@@ -6,7 +6,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { Card, CardContent, Typography, Button, Avatar } from "@mui/material";
 
-const endpage: React.FC = () => {
+const Endpage: React.FC = () => {
   const router = useRouter();
 
   // Fetch leaderboard data (sorted by points)
@@ -70,4 +70,4 @@ const endpage: React.FC = () => {
   );
 };
 
-export default endpage;
+export default Endpage;
