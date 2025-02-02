@@ -63,12 +63,14 @@ const ProfilePage: React.FC = () => {
         </Button>
       </div>
       <div style={{ marginTop: "20px", textAlign: "center" }}>
-        <Avatar
-          alt="Profile Picture"
-          src="/path/to/profile-picture.jpg"
-          style={{ width: "100px", height: "100px" }}
-        />
-        <h2>Username</h2>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Avatar
+            alt="Profile Picture"
+            src="/path/to/profile-picture.jpg"
+            style={{ width: "100px", height: "100px" }}
+          />
+          <h2>Username</h2>
+        </div>
         {/* Grid for Cows & Hamburgers */}
         <Grid container spacing={3} className="mt-5">
           {/* Cows Card */}
