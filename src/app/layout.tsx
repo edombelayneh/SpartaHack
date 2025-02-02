@@ -1,6 +1,7 @@
 import { ConvexClientProvider } from "./convex-client-provider";
 import { GameCodeProvider } from "./game-context-provider";
 import "./globals.css";
+import { PlayerIdProvider } from "./playerId-context-provider";
 
 export const metadata = {
   title: "My Cows!",
@@ -28,7 +29,9 @@ export default function RootLayout({
       </head>
       <body>
         <ConvexClientProvider>
-          <GameCodeProvider>{children}</GameCodeProvider>
+          <GameCodeProvider>
+            <PlayerIdProvider>{children}</PlayerIdProvider>
+          </GameCodeProvider>
         </ConvexClientProvider>
       </body>
     </html>

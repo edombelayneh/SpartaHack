@@ -48,3 +48,41 @@ export const joinGame = mutation({
     return { playerId, gameId: game._id };
   },
 });
+
+export const updateCowCount = mutation({
+  args: {
+    playerId: v.id("playerTable"),
+    cowCountChange: v.number(),
+  },
+  handler: async ({ db }, { playerId, cowCountChange }) => {
+    const player = await db.get(playerId);
+
+    if (!player) {
+      throw new Error("Player not found");
+    }
+    const newCowCount = player.cows + cowCountChange;
+
+    await db.patch(playerId, { cows: newCowCount });
+
+    return { cowCount: newCowCount };
+  },
+});
+
+export const updateBurgerCountMutation = mutation({
+  args: {
+    playerId: v.id("playerTable"),
+    burgersChange: v.number(),
+  },
+  handler: async ({ db }, { playerId, burgersChange }) => {
+    const player = await db.get(playerId);
+
+    if (!player) {
+      throw new Error("Player not found");
+    }
+    const newBurgerCount = player.burgers + burgersChange;
+
+    await db.patch(playerId, { burgers: newBurgerCount });
+
+    return { burgerCount: newBurgerCount };
+  },
+});

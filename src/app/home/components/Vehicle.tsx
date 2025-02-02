@@ -108,7 +108,7 @@ const Vehicle: React.FC<VehicleProps> = ({ redirectProfile, cowNum }) => {
 
   // Function to redirect to player profile with ID
   const handleProfileClick = (playerId: string) => {
-    router.push(`/profile/${playerId}`); // Navigate to profile page with player's ID
+    router.push(`/profile/`); // Navigate to profile page with player's ID
   };
 
   if (cowNum === 2) {
