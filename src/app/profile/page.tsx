@@ -78,7 +78,7 @@ const ProfilePage: React.FC = () => {
         >
           <Avatar
             alt="Profile Picture"
-            src="/path/to/profile-picture.jpg"
+            src=""
             style={{ width: "100px", height: "100px" }}
           />
           <h2>Username</h2>
