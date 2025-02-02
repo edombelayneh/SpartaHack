@@ -134,9 +134,9 @@ const ProfilePage: React.FC = () => {
 
           {/* Points Card (Only for tabValue 1) */}
           {tabValue === 1 && (
-            <Grid item xs={6}>
+            <Grid item xs={11}>
               <Card sx={{ p: 1 }}>
-                <CardContent>
+                <CardContent style={{ width:"fit-content" }}>
                   <Typography variant="body2">
                     <img
                       src="/points.png"
@@ -283,9 +283,9 @@ const ProfilePage: React.FC = () => {
                 Spot a hill with grade sign for points. They are worth 10
                 points. Hold on tight!
               </p>
-              <h4>Truck Escape Ramp Signs</h4>
+              <h4>Fall Rock Signs</h4>
               <p>
-                Spot a truck escape ramp sign for points. They are worth 15
+                Spot a falling rock sign for points. They are worth 15
                 points!
               </p>
               <br />
