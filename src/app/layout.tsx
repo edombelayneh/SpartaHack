@@ -1,3 +1,6 @@
+// import { ConvexClientProvider } from "./convex-client-provider";
+import "./globals.css";
+
 export const metadata = {
   title: "My Cows!",
   description: "Road Trip Unwrapped",
