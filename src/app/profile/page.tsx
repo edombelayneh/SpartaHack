@@ -135,7 +135,6 @@ const ProfilePage: React.FC = () => {
         <div
           style={{
             backgroundColor: 'white',
-
             borderRadius: '8px',
             textAlign: 'center',
             maxHeight: '70vh',
