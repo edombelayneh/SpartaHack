@@ -1,5 +1,5 @@
-
 import { ConvexClientProvider } from "./convex-client-provider";
+import { GameCodeProvider } from "./game-context-provider";
 import "./globals.css";
 
 export const metadata = {
@@ -16,11 +16,20 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Barriecito&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+        <ConvexClientProvider>
+          <GameCodeProvider>{children}</GameCodeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   );

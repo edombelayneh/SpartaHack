@@ -27,6 +27,29 @@ const Home: React.FC = () => {
         }}
         id="homePage"
       >
+        {/* Button on the center to end game */}
+        <div
+          style={{
+            position: "absolute",
+            top: "5%",
+            left: "48%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1,
+            cursor: "pointer",
+          }}
+        >
+          <button
+            style={{
+              backgroundColor: "Black",
+              border: "none",
+              cursor: "pointer",
+            }}
+            onClick={() => router.push("/endgame")}
+          >
+            End Game
+          </button>
+        </div>
+
         {/* Vehicle */}
         <Vehicle redirectProfile={redirectProfile} cowNum={2} />
 
