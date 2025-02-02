@@ -7,12 +7,12 @@ import Image from "next/image";
 import { Widgets } from "@mui/icons-material";
 // import CowIcon from "../components/cowIcon";
 
-export default function Home() {
+const Home: React.FC = () => {
   const router = useRouter();
 
   // Navigate to profile page
-  const redirectProfile = () => {
-    router.push("/profile"); // Ensure you have a /profile route
+  const redirectProfile = (): void => {
+    router.push("/profile");
   };
 
   return (
@@ -54,4 +54,6 @@ export default function Home() {
     </div>
     </div>
   );
-}
+};
+
+export default Home;
