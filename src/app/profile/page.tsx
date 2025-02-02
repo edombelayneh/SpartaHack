@@ -279,3 +279,123 @@ const ProfilePage: React.FC = () => {
 };
 
 export default ProfilePage;
+
+// "use client";
+// import React, { useState, useEffect } from "react";
+// import { useRouter, useParams } from "next/navigation"; // Import Next.js router & params
+// import PetsIcon from "@mui/icons-material/Pets";
+// import LunchDiningIcon from "@mui/icons-material/LunchDining";
+// import {
+//   Avatar,
+//   Button,
+//   Grid,
+//   Card,
+//   CardContent,
+//   Typography,
+// } from "@mui/material";
+// import { useQuery } from "convex/react";
+// import { api } from "../../../convex/_generated/api";
+// import { Id } from "../../../convex/_generated/dataModel"; // Import Convex ID type
+
+// interface Player {
+//   _id: Id<"playerTable">;
+//   name: string;
+//   avatar: string;
+//   cows: number;
+//   burgers: number;
+// }
+
+// const ProfilePage: React.FC = () => {
+//   const router = useRouter();
+//   const params = useParams();
+//   const playerId = Array.isArray(params.playerId)
+//     ? params.playerId[0]
+//     : params.playerId; // Ensure it's a string
+
+//   // ✅ Convert playerId to the correct Convex ID type
+//   const playerData = useQuery(
+//     api.secondaryFunctions.getPlayerById,
+//     playerId ? { playerId: playerId as Id<"playerTable"> } : "skip"
+//   );
+
+//   useEffect(() => {
+//     if (playerData === undefined) return;
+//     if (!playerData) {
+//       router.replace("/"); // Redirect home if player not found
+//     }
+//   }, [playerData]);
+
+//   if (!playerData) return <h2>Loading Player Profile...</h2>;
+
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         flexDirection: "column",
+//         alignItems: "center",
+//         padding: "20px",
+//       }}
+//     >
+//       <div
+//         style={{
+//           display: "flex",
+//           justifyContent: "space-between",
+//           width: "100%",
+//         }}
+//       >
+//         <Button
+//           onClick={() => router.back()}
+//           variant="contained"
+//           color="primary"
+//         >
+//           Back
+//         </Button>
+//       </div>
+//       <div style={{ marginTop: "20px", textAlign: "center" }}>
+//         <div
+//           style={{
+//             display: "flex",
+//             flexDirection: "column",
+//             alignItems: "center",
+//           }}
+//         >
+//           <Avatar
+//             alt={playerData.name}
+//             src={playerData.avatar || "/defaultCow.png"}
+//             style={{ width: "100px", height: "100px" }}
+//           />
+//           <h2>{playerData.name}</h2>
+//         </div>
+
+//         {/* Grid for Cows & Hamburgers */}
+//         <Grid container spacing={3} className="mt-5">
+//           {/* Cows Card */}
+//           <Grid item xs={6}>
+//             <Card sx={{ p: 1 }}>
+//               <CardContent>
+//                 <Typography variant="body2">
+//                   <PetsIcon />
+//                   {playerData.cows}
+//                 </Typography>
+//               </CardContent>
+//             </Card>
+//           </Grid>
+
+//           {/* Hamburger Card */}
+//           <Grid item xs={6}>
+//             <Card sx={{ p: 1 }}>
+//               <CardContent>
+//                 <Typography variant="body2">
+//                   <LunchDiningIcon />
+//                   {playerData.burgers}
+//                 </Typography>
+//               </CardContent>
+//             </Card>
+//           </Grid>
+//         </Grid>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ProfilePage;

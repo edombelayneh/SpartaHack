@@ -13,22 +13,6 @@ export default function Create() {
   const [message, setMessage] = useState("");
   const avatar = "../../public/defaultCow.png";
 
-  //   const handleCreateGame = async () => {
-  //     const result = await createGameMutation();
-  //     setGameCode(result.gameCode);
-  //     const gameCode =  result.gameCode;
-  //     handleJoinGame();
-  //   };
-
-  //   const handleJoinGame = async () => {
-  //     try {
-  //       const result = await joinGameMutation({ gameCode, playerName, avatar });
-  //       setMessage(`Joined game successfully! Player ID: ${result.playerId}`);
-  //     } catch (error) {
-  //       setMessage(`Error: `);
-  //     }
-  //   };
-
   const handleCreateGame = async () => {
     if (!playerName) {
       alert("Please enter your name before creating a game!");
