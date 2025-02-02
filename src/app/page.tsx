@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
-import { useState } from "react";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import { redirect } from "next/navigation";
-import { useMutation } from "convex/react";
-import { api } from "../../convex/_generated/api";
 
 export default function RoadTripPage() {
   const redirectToCreate = () => {

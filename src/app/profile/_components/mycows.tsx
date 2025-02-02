@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+// // mycows contains all of the icons for the user to interact with their cows
+// // once a icon is clicked, it runs a function to update the user's cow count and then display a text message about the update
+// // after 5 seconds, the text message will disappear and the user can interact with the icons again
 
 
 import { Icon, Modal } from "@mui/material";

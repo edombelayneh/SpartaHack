@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import { useRouter } from "next/navigation";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import Image from "next/image";
 import Vehicle from "./components/Vehicle";
 
 const Home: React.FC = () => {
@@ -51,7 +52,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Vehicle */}
-        <Vehicle redirectProfile={redirectProfile} cowNum={2} />
+        <Vehicle cowNum={2} />
 
         {/* Settings Icon in Top-Right Corner */}
         <span className="absolute top-5 right-5">

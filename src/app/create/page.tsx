@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import { useState } from "react";
-import { redirect } from "next/navigation";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { useRouter } from "next/navigation";
@@ -33,7 +34,8 @@ export default function Create() {
         // Call handleJoinGame after gameCode is updated
         await handleJoinGame(newGameCode);
       } catch (error) {
-        setMessage(`Error creating game:`);
+        console.error(error); // Log the error to the console
+        setMessage(`Error creating game`);
       }
     }
   };
@@ -53,7 +55,8 @@ export default function Create() {
       setInGame(true);
       console.log("InGame state updated:", inGame);
     } catch (error) {
-      setMessage(`Error joining game: `);
+      console.error(error);
+      setMessage(`Error joining game:`);
     }
   };
 
