@@ -1,143 +1,246 @@
-import { Icon, Modal, Button } from '@mui/material';
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { Icon, Modal, Button } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { api } from "../../../../convex/_generated/api";
+import { useQuery, useMutation } from "convex/react"; // ✅ Import `useMutation`
+import { usePlayerId } from "../../playerId-context-provider";
 
 const RoadHazards: React.FC = () => {
-    const [pointCount, setPointCount] = useState(0);
-    const [message, setMessage] = useState<string | null>(null);
-    const [isCrossingOpen, setIsCrossingOpen] = useState(false);
+  const [pointCount, setPointCount] = useState(0);
+  const [message, setMessage] = useState<string | null>(null);
+  const [isCrossingOpen, setIsCrossingOpen] = useState(false);
+  const { playerId } = usePlayerId();
 
+  // ✅ Fetch player data
+  const fetchedPlayer = useQuery(
+    api.secondaryFunctions.getPlayerById,
+    playerId ? { playerId } : "skip"
+  );
 
-    const handleCrossingClick = () => {
-        setIsCrossingOpen(true);
-        // setPointCount(pointCount + 1);
-        // setMessage(`You have updated your point count to ${pointCount} for Crossing`);
+  // ✅ Mutation hook for updating cows
+  const roadPointChangeMutation = useMutation(api.functions.updateRoadPoints);
 
-        // setTimeout(() => {
-        //     setMessage(null);
-        // }, 5000);
-    };
+  useEffect(() => {
+    console.log("Fetched player:", fetchedPlayer);
+  }, [fetchedPlayer]);
 
-    const handleDeerCrossingClick = () => {
-        handleCloseCrossing();
-        setPointCount(pointCount + 1);
-        setMessage(`You have updated your point count to ${pointCount} for Deer Crossing`);
+  const handleCrossingClick = async () => {
+    setIsCrossingOpen(true);
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
 
-        setTimeout(() => {
-            setMessage(null);
-        }, 5000);
-    };
-    const handleBearCrossingClick = () => {
-        handleCloseCrossing();
-        //plus 10 points
-    };
-    const handleFarmCrossingClick = () => {
-        handleCloseCrossing();
-        //plus 5 points
-    };
-    const handleTruckCrossingClick = () => {
-        handleCloseCrossing();
-        //plus 3 points
-    };
-    const handleSnowmobileCrossingClick = () => {
-        handleCloseCrossing();
-        //plus 5 points
-    };
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 1,
+      });
 
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
 
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
+  };
 
-    const handleCurveClick = () => {
-        setPointCount(pointCount + 2);
-        setMessage(`You have updated your point count to ${pointCount} for Curve`);
+  const handleDeerCrossingClick = () => {
+    handleCloseCrossing();
+    setPointCount(pointCount + 1);
+    setMessage(
+      `You have updated your point count to ${pointCount} for Deer Crossing`
+    );
 
-        setTimeout(() => {
-            setMessage(null);
-        }, 5000);
-    };
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
+  const handleBearCrossingClick = () => {
+    handleCloseCrossing();
+    //plus 10 points
+  };
+  const handleFarmCrossingClick = () => {
+    handleCloseCrossing();
+    //plus 5 points
+  };
+  const handleTruckCrossingClick = () => {
+    handleCloseCrossing();
+    //plus 3 points
+  };
+  const handleSnowmobileCrossingClick = () => {
+    handleCloseCrossing();
+    //plus 5 points
+  };
 
-    const handleSlipperyClick = () => {
-        setPointCount(pointCount + 5);
-        setMessage(`You have updated your point count to ${pointCount} for Slippery`);
+  const handleCurveClick = () => {
+    setPointCount(pointCount + 2);
+    setMessage(`You have updated your point count to ${pointCount} for Curve`);
 
-        setTimeout(() => {
-            setMessage(null);
-        }, 5000);
-    };
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
 
-    const handleHillClick = () => {
-        setPointCount(pointCount + 10);
-        setMessage(`You have updated your point count to ${pointCount} for Hill`);
+  const handleSlipperyClick = () => {
+    setPointCount(pointCount + 5);
+    setMessage(
+      `You have updated your point count to ${pointCount} for Slippery`
+    );
 
-        setTimeout(() => {
-            setMessage(null);
-        }, 5000);
-    };
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
 
-    const handleRoadworkClick = () => {
-        setPointCount(pointCount + 4);
-        setMessage(`You have updated your point count to ${pointCount} for Roadwork`);
+  const handleHillClick = () => {
+    setPointCount(pointCount + 10);
+    setMessage(`You have updated your point count to ${pointCount} for Hill`);
 
-        setTimeout(() => {
-            setMessage(null);
-        }, 5000);
-    };
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
 
-    const handleRockfallClick = () => {
-        setPointCount(pointCount + 15);
-        setMessage(`You have updated your point count to ${pointCount} for Rockfall`);
+  const handleRoadworkClick = () => {
+    setPointCount(pointCount + 4);
+    setMessage(
+      `You have updated your point count to ${pointCount} for Roadwork`
+    );
 
-        setTimeout(() => {
-            setMessage(null);
-        }, 5000);
-    };
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
 
-    
-      const handleCloseCrossing = () => {
-        setIsCrossingOpen(false);
-      };
+  const handleRockfallClick = () => {
+    setPointCount(pointCount + 15);
+    setMessage(
+      `You have updated your point count to ${pointCount} for Rockfall`
+    );
 
-    return(
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
+
+  const handleCloseCrossing = () => {
+    setIsCrossingOpen(false);
+  };
+
+  return (
+    <div>
+      {message ? (
+        <div>{message}</div>
+      ) : (
         <div>
-            {message ? (
-            <div>{message}</div>
-            ) : (
-            <div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '20px' }}>
-                <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                <Icon onClick={handleCrossingClick} style={{ fontSize: '64px' }}>
-                <img src="/deer.png" alt="Crossing Icon" style={{ width: '100%', height: '100%' }} />
-                </Icon>
-                </div>
-                <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                <Icon onClick={handleCurveClick} style={{ fontSize: '64px' }}>
-                <img src="/curve.png" alt="Curve Icon" style={{ width: '100%', height: '100%' }} />
-                </Icon>
-                </div>
-                <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                <Icon onClick={handleSlipperyClick} style={{ fontSize: '64px' }}>
-                <img src="/slippery.png" alt="Slippery Icon" style={{ width: '100%', height: '100%' }} />
-                </Icon>
-                </div>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", marginBottom: "20px" }}
+          >
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon onClick={handleCrossingClick} style={{ fontSize: "64px" }}>
+                <img
+                  src="/deer.png"
+                  alt="Crossing Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '20px' }}>
-                <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                <Icon onClick={handleHillClick} style={{ fontSize: '64px' }}>
-                <img src="/hill.png" alt="Hill Icon" style={{ width: '100%', height: '100%' }} />
-                </Icon>
-                </div>
-                <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                <Icon onClick={handleRoadworkClick} style={{ fontSize: '64px' }}>
-                <img src="/roadwork.png" alt="RoadWork Icon" style={{ width: '100%', height: '100%' }} />
-                </Icon>
-                </div>
-                <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                <Icon onClick={handleRockfallClick} style={{ fontSize: '64px' }}>
-                <img src="/rockfall.png" alt="RockFall Icon" style={{ width: '100%', height: '100%' }} />
-                </Icon>
-                </div>
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon onClick={handleCurveClick} style={{ fontSize: "64px" }}>
+                <img
+                  src="/curve.png"
+                  alt="Curve Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
             </div>
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon onClick={handleSlipperyClick} style={{ fontSize: "64px" }}>
+                <img
+                  src="/slippery.png"
+                  alt="Slippery Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
             </div>
-    )}
-    <Modal
+          </div>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", marginBottom: "20px" }}
+          >
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon onClick={handleHillClick} style={{ fontSize: "64px" }}>
+                <img
+                  src="/hill.png"
+                  alt="Hill Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon onClick={handleRoadworkClick} style={{ fontSize: "64px" }}>
+                <img
+                  src="/roadwork.png"
+                  alt="RoadWork Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon onClick={handleRockfallClick} style={{ fontSize: "64px" }}>
+                <img
+                  src="/rockfall.png"
+                  alt="RockFall Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+          </div>
+        </div>
+      )}
+      <Modal
         open={isCrossingOpen}
         onClose={handleCloseCrossing}
         style={{
@@ -153,40 +256,109 @@ const RoadHazards: React.FC = () => {
             textAlign: "center",
             maxHeight: "70vh",
             overflowY: "auto",
-            padding:"50px",
+            padding: "50px",
             margin: "20px",
           }}
         >
-            <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '10px' }}>
-                        <div style={{ flex: '1 1 50%', display: 'flex', justifyContent: 'center' }}>
-                            <Icon onClick={handleDeerCrossingClick} style={{ fontSize: '64px' }}>
-                            <img src="/deer.png" alt="Deer Icon" style={{ width: '100%', height: '100%' }} />
-                     </Icon>
-                </div>
-                <div style={{ flex: '1 1 50%', display: 'flex', justifyContent: 'center' }}>
-                            <Icon onClick={handleTruckCrossingClick} style={{ fontSize: '64px' }}>
-                            <img src="/truck.png" alt="Truck Icon" style={{ width: '100%', height: '100%' }} />
-                            </Icon>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}
+          >
+            <div
+              style={{
+                flex: "1 1 50%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon
+                onClick={handleDeerCrossingClick}
+                style={{ fontSize: "64px" }}
+              >
+                <img
+                  src="/deer.png"
+                  alt="Deer Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
             </div>
-         </div>
-         <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '10px' }}>
-                     <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                         <Icon onClick={handleFarmCrossingClick} style={{ fontSize: '64px' }}>
-                         <img src="/farm.png" alt="Farm Icon" style={{ width: '100%', height: '100%' }} />
-                         </Icon>
-                     </div>
-                     <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                         <Icon onClick={handleBearCrossingClick} style={{ fontSize: '64px' }}>
-                         <img src="/bear.png" alt="Bear Icon" style={{ width: '100%', height: '100%' }} />
-                         </Icon>
-                     </div>
-                     <div style={{ flex: '1 1 33%', display: 'flex', justifyContent: 'center' }}>
-                         <Icon onClick={handleSnowmobileCrossingClick} style={{ fontSize: '64px' }}>
-                         <img src="/snowmobile.png" alt="Snowmobile Icon" style={{ width: '100%', height: '100%' }} />
-                         </Icon>
-                     </div>
-                     </div>
-            <Button
+            <div
+              style={{
+                flex: "1 1 50%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon
+                onClick={handleTruckCrossingClick}
+                style={{ fontSize: "64px" }}
+              >
+                <img
+                  src="/truck.png"
+                  alt="Truck Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+          </div>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}
+          >
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon
+                onClick={handleFarmCrossingClick}
+                style={{ fontSize: "64px" }}
+              >
+                <img
+                  src="/farm.png"
+                  alt="Farm Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon
+                onClick={handleBearCrossingClick}
+                style={{ fontSize: "64px" }}
+              >
+                <img
+                  src="/bear.png"
+                  alt="Bear Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+            <div
+              style={{
+                flex: "1 1 33%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Icon
+                onClick={handleSnowmobileCrossingClick}
+                style={{ fontSize: "64px" }}
+              >
+                <img
+                  src="/snowmobile.png"
+                  alt="Snowmobile Icon"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </Icon>
+            </div>
+          </div>
+          <Button
             onClick={handleCloseCrossing}
             variant="contained"
             color="primary"
@@ -194,10 +366,10 @@ const RoadHazards: React.FC = () => {
           >
             Back
           </Button>
-         </div>
-        </Modal>
         </div>
-    )
+      </Modal>
+    </div>
+  );
 };
 
 export default RoadHazards;

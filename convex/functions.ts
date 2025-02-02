@@ -86,3 +86,22 @@ export const updateBurgerCountMutation = mutation({
     return { burgerCount: newBurgerCount };
   },
 });
+
+export const updateRoadPoints = mutation({
+  args: {
+    playerId: v.id("playerTable"),
+    pointChange: v.number(),
+  },
+  handler: async ({ db }, { playerId, pointChange }) => {
+    const player = await db.get(playerId);
+
+    if (!player) {
+      throw new Error("Player not found");
+    }
+    const newRoadPoints = player.roadPoints + pointChange;
+
+    await db.patch(playerId, { roadPoints: newRoadPoints });
+
+    return { roadPointsCount: newRoadPoints };
+  },
+});

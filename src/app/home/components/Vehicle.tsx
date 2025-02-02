@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -28,9 +30,17 @@ const Vehicle: React.FC<VehicleProps> = ({ cowNum }) => {
     gameCode ? { gameCode } : "skip"
   );
 
+  //   useEffect(() => {
+  //     if (fetchedPlayers !== undefined && fetchedPlayers !== null) {
+  //       setPlayers(fetchedPlayers);
+  //     }
+  //   }, [fetchedPlayers]);
+
   useEffect(() => {
-    if (fetchedPlayers !== undefined) {
-      setPlayers(fetchedPlayers); // Store player list in state
+    if (fetchedPlayers) {
+      setPlayers(
+        (fetchedPlayers ?? []).filter((player) => player !== null) as Player[]
+      );
     }
   }, [fetchedPlayers]);
 
