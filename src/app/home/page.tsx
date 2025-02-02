@@ -8,7 +8,7 @@ import Vehicle from "./components/Vehicle";
 
 const Home: React.FC = () => {
   const router = useRouter();
-
+  
   // Navigate to profile page
   const redirectProfile = (): void => {
     router.push("/profile");
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
         >
           <button
             style={{
-              backgroundColor: "Black",
+              backgroundColor: "Red",
               border: "none",
               cursor: "pointer",
             }}

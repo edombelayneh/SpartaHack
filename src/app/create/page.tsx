@@ -49,7 +49,7 @@ export default function Create() {
       const result = await joinGameMutation({
         gameCode: newGameCode,
         playerName,
-        avatar,
+        avatar
       });
       setMessage(`Joined game successfully! Player ID: ${result.playerId}`);
       setInGame(true);
