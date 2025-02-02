@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
@@ -14,13 +16,10 @@ import {
   Modal,
 } from "@mui/material";
 import MyCows from "./_components/mycows";
-
-import { getPlayerById } from "../../../convex/secondaryFunctions";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { usePlayerId } from "../playerId-context-provider";
 import RoadHazards from "./_components/roadHazards";
-
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -89,8 +88,8 @@ const ProfilePage: React.FC = () => {
           }}
         >
           <Avatar
-            alt={fetchedPlayer?.avatar}
-            src=""
+            alt="avatar"
+            src={fetchedPlayer?.avatar}
             style={{ width: "100px", height: "100px" }}
           />
           <h2>{fetchedPlayer?.name}</h2>
@@ -190,41 +189,42 @@ const ProfilePage: React.FC = () => {
           {modalTabValue === 0 && (
             <>
               <h3>My Cows Rules</h3>
-              <h4>"My Cows!"</h4>
+              <h4>&quot;My Cows!&quot;</h4>
               <p>
-                When a player sees a field of cows and exclaims "my cows!", said
-                player gets an estimation of the number of cows in that field.
+                When a player sees a field of cows and exclaims &quot;my
+                cows!&quot;, said player gets an estimation of the number of
+                cows in that field.
               </p>
-              <h4>"Marry my Cows"</h4>
+              <h4>&quot;Marry my Cows&quot;</h4>
               <p>
-                When a player sees a church and exclaims "marry my Cows," said
-                player's cow count doubles.
+                When a player sees a church and exclaims &quot;marry my
+                Cows,&quot; said player&apos;s cow count doubles.
               </p>
-              <h4>"Bury your Cows"</h4>
+              <h4>&quot;Bury your Cows&quot;</h4>
               <p>
-                When a player sees a cemetery, exclaims "bury your cows," all
-                other players' cows die.
+                When a player sees a cemetery, exclaims &quot;bury your
+                cows,&quot; all other players&apos; cows die.
               </p>
-              <h4>"Mad Cow Disease"</h4>
+              <h4>&quot;Mad Cow Disease&quot;</h4>
               <p>
-                When a player sees a hospital and exclaims "mad cow disease,"
-                all other players lose half their cows.
+                When a player sees a hospital and exclaims &quot;mad cow
+                disease,&quot; all other players lose half their cows.
               </p>
-              <h4>"Cash in my Cows"</h4>
+              <h4>&quot;Cash in my Cows&quot;</h4>
               <p>
-                When a player sees a McDonald's and exclaims "cash in my cows,"
-                said player's cows are now burgers.
+                When a player sees a McDonald&apos;s and exclaims &quot;cash in
+                my cows,&quot; said player&apos;s cows are now burgers.
               </p>
-              <h4>"Discount cows"</h4>
+              <h4>&quot;Discount cows&quot;</h4>
               <p>
-                When a player sees a Dollar General and exclaims “discount
-                cows,” all other players give the caller 25% of their cows.
+                When a player sees a Dollar General and exclaims &quot;discount
+                cows,&quot; all other players give the caller 25% of their cows.
               </p>
-              <h4>"Meals on wheels"</h4>
+              <h4>&quot;Meals on wheels&quot;</h4>
               <p>
                 If a player spots cows being transported in a trailer, they can
-                exclaim 'meals on wheels' to convert the mo(o)ving cows into an
-                equal number of burgers."
+                exclaim &apos;meals on wheels&apos; to convert the mo(o)ving
+                cows into an equal number of burgers.
               </p>
               <br />
               <p>
