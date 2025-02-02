@@ -6,12 +6,8 @@ import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 
 export default function RoadTripPage() {
-  const createGameMutation = useMutation(api.functions.createGame);
-  const [gameCode, setGameCode] = useState("");
-
-  const handleCreateGame = async () => {
-    const result = await createGameMutation();
-    setGameCode(result.gameCode);
+  const redirectToCreate = () => {
+    redirect("/create");
   };
 
   const redirectToJoin = () => {
@@ -35,14 +31,11 @@ export default function RoadTripPage() {
         {/* making both buttons vertically stacked */}
         <div className="flex flex-col items-center p-10">
           <Button
-            onClick={handleCreateGame}
+            onClick={redirectToCreate}
             className="bg-blue-500 text-white px-4 py-2 rounded-lg"
           >
             Create Game
           </Button>
-          {gameCode && (
-            <p className="mt-4 text-lg font-bold">Game Code: {gameCode}</p>
-          )}
         </div>
         <div style={{ padding: "5px" }}>
           <Button
