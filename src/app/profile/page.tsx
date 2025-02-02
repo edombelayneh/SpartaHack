@@ -125,47 +125,73 @@ const ProfilePage: React.FC = () => {
         open={isHelpOpen}
         onClose={handleCloseHelp}
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div
           style={{
-            backgroundColor: 'white',
+            backgroundColor: "white",
 
-            borderRadius: '8px',
-            textAlign: 'center',
-            maxHeight: '70vh',
-            overflowY: 'auto',
+            borderRadius: "8px",
+            textAlign: "center",
+            maxHeight: "70vh",
+            overflowY: "auto",
           }}
         >
           <h2>Game Rules</h2>
           <h3>My Cows Rules</h3>
-            <ul>
-            <li><b>"My Cows!"</b> - when a player sees a field of cows and exclaims "my cows!", said player gets an estimation of the number of cows in that field. </li>
-            <li><b>"Marry my Cows"</b> - when a player sees a church and exclaims "marry my Cows," said players cow count doubles. </li>
-            <li><b>"Bury your Cows"</b> - when a player sees a cemetery, exclaims "bury your cows," all other players cows die. </li>
-            <li><b>"Mad Cow Disease"</b> - when a player sees a hospital and exclaims "mad cow Disease," all other players lose half their cows. </li>
-            <li><b>"Cash in my Cows"</b> - when a player sees a McDonald's and exclaims "cash in my Cows," said players cows are now burgers.  </li>
-            <li><b>"Discount cows"</b> - when a player sees a Dollar General and exclaims “discount cows,” all other players give caller 25% of their cows. </li>
-            </ul>
-            <p>At the end of the trip, the player with the most cows and hamburgers wins the cow game</p>
+          <ul>
+            <li>
+              <b>"My Cows!"</b> - when a player sees a field of cows and
+              exclaims "my cows!", said player gets an estimation of the number
+              of cows in that field. 
+            </li>
+            <li>
+              <b>"Marry my Cows"</b> - when a player sees a church and exclaims
+              "marry my Cows," said players cow count doubles.{" "}
+            </li>
+            <li>
+              <b>"Bury your Cows"</b> - when a player sees a cemetery, exclaims
+              "bury your cows," all other players cows die. 
+            </li>
+            <li>
+              <b>"Mad Cow Disease"</b> - when a player sees a hospital and
+              exclaims "mad cow Disease," all other players lose half their
+              cows. 
+            </li>
+            <li>
+              <b>"Cash in my Cows"</b> - when a player sees a McDonald's and
+              exclaims "cash in my Cows," said players cows are now burgers. {" "}
+            </li>
+            <li>
+              <b>"Discount cows"</b> - when a player sees a Dollar General and
+              exclaims “discount cows,” all other players give caller 25% of
+              their cows.{" "}
+            </li>
+          </ul>
+          <p>
+            At the end of the trip, the player with the most cows and hamburgers
+            wins the cow game
+          </p>
           <h3>Road Hazards Rules</h3>
-            <ul>
-              <li><b></b></li>
-            </ul>
-            <p>At the end of the trip, the player with the most safety points wins the road hazards game </p>
+          <ul>
+            <li>
+              <b></b>
+            </li>
+          </ul>
+          <p>
+            At the end of the trip, the player with the most safety points wins
+            the road hazards game{" "}
+          </p>
           <h3>Can you win both?</h3>
           <Button onClick={handleCloseHelp} variant="contained" color="primary">
             Close
           </Button>
         </div>
       </Modal>
-
     </div>
-
-    
   );
 };
 
