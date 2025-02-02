@@ -103,7 +103,7 @@ const ProfilePage: React.FC = () => {
                 <CardContent>
                   <Typography variant="body2">
                     <img
-                      src="/cowside.png"
+                      src="/CowSide.png"
                       alt="cow"
                       style={{ width: "40px", height: "40px" }}
                     />
