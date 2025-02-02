@@ -9,7 +9,6 @@ export default function Join() {
   const joinGameMutation = useMutation(api.functions.joinGame);
   const [gameCode, setGameCode] = useState("");
   const [playerName, setPlayerName] = useState("");
-  //   const [avatar, setAvatar] = useState("");
   const [message, setMessage] = useState("");
   const avatar = "../../public/defaultCow.png";
 
