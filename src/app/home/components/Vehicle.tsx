@@ -28,9 +28,6 @@ const Vehicle: React.FC<VehicleProps> = ({ redirectProfile, cowNum}) => {
                     name="Test"
                     size={80}
                     url="/defaultCow.png"
-                    position="absolute"
-                    fill={true}
-                    rotate={true}
                 />
             </span>
             
@@ -38,12 +35,9 @@ const Vehicle: React.FC<VehicleProps> = ({ redirectProfile, cowNum}) => {
             <span style={{position: 'absolute', top: "53vh", left: "51vw"}}>
                 <CowIcon
                     onClick={redirectProfile}
-                    name="Test"
+                    name="Test2"
                     size={80}
                     url="/defaultCow.png"
-                    position="absolute"
-                    fill={true}
-                    rotate={true}
                 />
             </span>
         </div>

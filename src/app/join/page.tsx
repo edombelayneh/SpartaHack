@@ -10,7 +10,7 @@ export default function Join() {
   const [gameCode, setGameCode] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [message, setMessage] = useState("");
-  const avatar = "../../public/defaultCow.png";
+  const avatar = "/defaultCow.png";
 
   const handleJoinGame = async () => {
     try {

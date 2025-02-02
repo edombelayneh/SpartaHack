@@ -5,9 +5,10 @@ interface CowIconProps {
     size?: number;
     url: string;
     rotate?: boolean;
+    onClick?: () => void;
 }
 
-const CowIcon: React.FC<CowIconProps> = ({ name, size = 24, url, rotate = false }) => {
+const CowIcon: React.FC<CowIconProps> = ({ name, size = 24, url, rotate = false, onClick }) => {
     return (
         <img
             src={url}
@@ -16,6 +17,7 @@ const CowIcon: React.FC<CowIconProps> = ({ name, size = 24, url, rotate = false 
             alt={name}
             aria-hidden="true"
             style={rotate ? { transform: "rotate(180deg)" } : undefined}
+            onClick={onClick}
         />
     );
 };
