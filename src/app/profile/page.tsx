@@ -90,7 +90,11 @@ const ProfilePage: React.FC = () => {
             <Card sx={{ p: 1 }}>
               <CardContent>
                 <Typography variant="body2">
-                  <PetsIcon />
+                  <img
+                    src="/cowside.png"
+                    alt="cow"
+                    style={{ width: "40px", height: "40px" }}
+                  />
                   {cowCount}
                 </Typography>
               </CardContent>
@@ -102,7 +106,11 @@ const ProfilePage: React.FC = () => {
             <Card sx={{ p: 1 }}>
               <CardContent>
                 <Typography variant="body2">
-                  <LunchDiningIcon />
+                <img
+                    src="/burger.png"
+                    alt="hamburger"
+                    style={{ width: "40px", height: "40px" }}
+                  />
                   {hamBurgerCount}
                 </Typography>
               </CardContent>
