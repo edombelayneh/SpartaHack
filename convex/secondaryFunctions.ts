@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { query } from "./_generated/server";
 import { Id } from "./_generated/dataModel";
 

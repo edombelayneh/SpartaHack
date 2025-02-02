@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
@@ -14,13 +16,10 @@ import {
   Modal,
 } from "@mui/material";
 import MyCows from "./_components/mycows";
-
-import { getPlayerById } from "../../../convex/secondaryFunctions";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { usePlayerId } from "../playerId-context-provider";
 import RoadHazards from "./_components/roadHazards";
-
 
 const ProfilePage: React.FC = () => {
   const router = useRouter();
@@ -89,8 +88,8 @@ const ProfilePage: React.FC = () => {
           }}
         >
           <Avatar
-            alt={fetchedPlayer?.avatar}
-            src=""
+            alt="avatar"
+            src={fetchedPlayer?.avatar}
             style={{ width: "100px", height: "100px" }}
           />
           <h2>{fetchedPlayer?.name}</h2>

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import { useRouter } from "next/navigation";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import Image from "next/image";
 import Vehicle from "./components/Vehicle";
 
 const Home: React.FC = () => {
