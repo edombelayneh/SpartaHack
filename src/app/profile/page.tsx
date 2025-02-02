@@ -13,6 +13,7 @@ import {
   Typography,
   Tabs,
   Tab,
+  Modal,
 } from "@mui/material";
 
 const ProfilePage: React.FC = () => {
@@ -20,14 +21,18 @@ const ProfilePage: React.FC = () => {
   const [cowCount, setCowCount] = React.useState(200);
   const [hamBurgerCount, setHamBurgerCount] = React.useState(100);
   const [tabValue, setTabValue] = useState(0); // 🔹 State for Tabs
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   const handleBackClick = () => {
     router.back();
   };
 
   const handleHelpClick = () => {
-    // Implement help button functionality here
-    alert("Help button clicked");
+    setIsHelpOpen(true);
+  };
+
+  const handleCloseHelp = () => {
+    setIsHelpOpen(false);
   };
 
   const handleChange = () => {
@@ -115,7 +120,35 @@ const ProfilePage: React.FC = () => {
           </div>
         )}
       </div>
+
+      <Modal
+        open={isHelpOpen}
+        onClose={handleCloseHelp}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: 'white',
+            padding: '20px',
+            borderRadius: '8px',
+            textAlign: 'center',
+          }}
+        >
+          <h2>Game Rules</h2>
+          <p>Here is some helpful information...</p>
+          <Button onClick={handleCloseHelp} variant="contained" color="primary">
+            Close
+          </Button>
+        </div>
+      </Modal>
+
     </div>
+
+    
   );
 };
 
