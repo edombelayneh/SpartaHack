@@ -52,7 +52,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Vehicle */}
-        <Vehicle redirectProfile={redirectProfile} cowNum={2} />
+        <Vehicle cowNum={2} />
 
         {/* Settings Icon in Top-Right Corner */}
         <span className="absolute top-5 right-5">
