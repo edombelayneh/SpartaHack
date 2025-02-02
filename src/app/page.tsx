@@ -26,7 +26,7 @@ export default function RoadTripPage() {
     >
       <div className="flex flex-col items-center space-y-4">
         <h1 className="text-2xl font-bold">My Cows:</h1>
-        <h2 className="text-xl">Road Unwrapped</h2>
+        <h2 className="text-xl">Road Trip Wrapped</h2>
         {/* making both buttons vertically stacked */}
         <div className="flex flex-col items-center p-10">
           <Button

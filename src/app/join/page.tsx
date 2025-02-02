@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { usePlayerId } from "../playerId-context-provider";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function Join() {
   const router = useRouter();
@@ -41,6 +42,7 @@ export default function Join() {
 
   return (
     <div className="flex flex-col items-center p-10">
+      <ArrowBackIcon></ArrowBackIcon>
       <input
         type="text"
         placeholder="Enter Game Code"
