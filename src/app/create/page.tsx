@@ -12,7 +12,7 @@ export default function Create() {
   const [playerName, setPlayerName] = useState("");
   const [gameCode, setGameCode] = useState("");
   const [message, setMessage] = useState("");
-  const avatar = "../../public/defaultCow.png";
+  const avatar = "/BrownCow.png";
 
   const handleCreateGame = async () => {
     if (!playerName) {
