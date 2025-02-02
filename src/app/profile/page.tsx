@@ -94,39 +94,61 @@ const ProfilePage: React.FC = () => {
           />
           <h2>{fetchedPlayer?.name}</h2>
         </div>
-        {/* Grid for Cows & Hamburgers */}
-        <Grid container spacing={3} className="mt-5">
-          {/* Cows Card */}
-          <Grid item xs={6}>
-            <Card sx={{ p: 1 }}>
-              <CardContent>
-                <Typography variant="body2">
-                  <img
-                    src="/cowside.png"
-                    alt="cow"
-                    style={{ width: "40px", height: "40px" }}
-                  />
-                  {fetchedPlayer?.cows}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+        {/* Grid for Cards */}
+        <Grid container spacing={2} className="mt-5">
+          {/* Cows Card (Only for tabValue 0) */}
+          {tabValue === 0 && (
+            <Grid item xs={6}>
+              <Card sx={{ p: 1 }}>
+                <CardContent>
+                  <Typography variant="body2">
+                    <img
+                      src="/cowside.png"
+                      alt="cow"
+                      style={{ width: "40px", height: "40px" }}
+                    />
+                    {fetchedPlayer?.cows}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
 
-          {/* Hamburger Card */}
-          <Grid item xs={6}>
-            <Card sx={{ p: 1 }}>
-              <CardContent>
-                <Typography variant="body2">
-                  <img
-                    src="/burger.png"
-                    alt="hamburger"
-                    style={{ width: "40px", height: "40px" }}
-                  />
-                  {fetchedPlayer?.burgers}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          {/* Hamburger Card (Only for tabValue 0) */}
+          {tabValue === 0 && (
+            <Grid item xs={6}>
+              <Card sx={{ p: 1 }}>
+                <CardContent>
+                  <Typography variant="body2">
+                    <img
+                      src="/burger.png"
+                      alt="hamburger"
+                      style={{ width: "40px", height: "40px" }}
+                    />
+                    {fetchedPlayer?.burgers}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
+
+          {/* Points Card (Only for tabValue 1) */}
+          {tabValue === 1 && (
+            <Grid item xs={6}>
+              <Card sx={{ p: 1 }}>
+                <CardContent>
+                  <Typography variant="body2">
+                    <img
+                      src="/points.png"
+                      alt="road sign"
+                      style={{ width: "40px", height: "40px" }}
+                    />
+                    {fetchedPlayer?.roadPoints}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
         </Grid>
       </div>
       <div className="w-full max-w-md mt-5">

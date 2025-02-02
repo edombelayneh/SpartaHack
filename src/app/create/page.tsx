@@ -13,6 +13,7 @@ export default function Create() {
   const [playerName, setPlayerName] = useState("");
   const [gameCode, setGameCode] = useState("");
   const [message, setMessage] = useState("");
+  const avatar = "/BrownCow.png";
   const [inGame, setInGame] = useState(false);
   const avatar = "../../public/defaultCow.png";
   const router = useRouter();
