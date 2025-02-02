@@ -40,7 +40,19 @@ export default function Join() {
   };
 
   return (
-    <div className="flex flex-col items-center p-10">
+    <div
+      className="flex flex-col items-center p-10"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        margin: 0,
+        padding: 0,
+        overflow: "hidden",
+        backgroundImage: "url('/CowWave.png')",
+        backgroundSize: "100% 100%",
+      }}
+      id="joinPage"
+    >
       <input
         type="text"
         placeholder="Enter Game Code"
