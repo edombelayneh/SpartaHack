@@ -54,7 +54,7 @@ const MyCows: React.FC = () => {
       // ✅ Call mutation to update cow count
       const result = await updateCowCountMutation({
         playerId: fetchedPlayer._id,
-        cowCountChange: fetchedPlayer.cows + selectedCowsNumber,
+        cowCountChange: selectedCowsNumber,
       });
 
       // ✅ Update UI with new cow count
@@ -69,9 +69,6 @@ const MyCows: React.FC = () => {
       console.error("Failed to update cow count:", error);
       setMessage("Error updating cow count");
     }
-    finally{
-        selectedCowsNumber = 0;
-    }
 
   };
 
@@ -83,14 +80,15 @@ const MyCows: React.FC = () => {
 
     try {
       // ✅ Call mutation to update cow count
+      const resultBurger = await updateBurgerCountMutation({
+        playerId: fetchedPlayer._id,
+        burgersChange: fetchedPlayer.cows ,
+      });
       const resultCow = await updateCowCountMutation({
         playerId: fetchedPlayer._id,
         cowCountChange: -1 * fetchedPlayer.cows,
       });
-      const resultBurger = await updateBurgerCountMutation({
-        playerId: fetchedPlayer._id,
-        burgersChange: fetchedPlayer.cows + fetchedPlayer.burgers,
-      });
+      
 
       // ✅ Update UI with new cow count
       setMessage(
@@ -116,7 +114,7 @@ const MyCows: React.FC = () => {
       // ✅ Call mutation to update cow count
       const result = await updateCowCountMutation({
         playerId: fetchedPlayer._id,
-        cowCountChange: fetchedPlayer.cows * 2,
+        cowCountChange: fetchedPlayer.cows,
       });
 
       // ✅ Update UI with new cow count
@@ -143,7 +141,7 @@ const MyCows: React.FC = () => {
       // ✅ Call mutation to update cow count
       const result = await updateBurgerCountMutation({
         playerId: fetchedPlayer._id,
-        burgersChange: fetchedPlayer.burgers + 1,
+        burgersChange: 1,
       });
 
       // ✅ Update UI with new cow count
@@ -316,34 +314,49 @@ const MyCows: React.FC = () => {
               textAlign: "center",
               maxHeight: "70vh",
               overflowY: "auto",
-              paddingLeft: "30px",
-              paddingRight: "30px",
+              padding: "30px",
               margin: "20px",
             }}
           >
             <div>
-        <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}>
-            <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
-                <button onClick={() => handleMyCowSubmit(5)}>5</button>
-            </div>
-            <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
-                <button onClick={() => handleMyCowSubmit(10)}>10</button>
-            </div>
-            <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
-                <button onClick={() => handleMyCowSubmit(15)}>15</button>
-            </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
+            <button 
+            onClick={() => handleMyCowSubmit(5)} 
+            style={{ fontSize: "20px", boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)" }}
+            >
+            5
+            </button>
+            <button 
+            onClick={() => handleMyCowSubmit(10)} 
+            style={{ fontSize: "20px", boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)" }}
+            >
+            10
+            </button>
+            <button 
+            onClick={() => handleMyCowSubmit(15)} 
+            style={{ fontSize: "20px", boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)" }}
+            >
+            15
+            </button>
+            <button 
+            onClick={() => handleMyCowSubmit(25)} 
+            style={{ fontSize: "20px", boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)" }}
+            >
+            25
+            </button>
+            <button 
+            onClick={() => handleMyCowSubmit(50)} 
+            style={{ fontSize: "20px", boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)" }}
+            >
+            50
+            </button>
+            <button 
+            onClick={() => handleMyCowSubmit(100)} 
+            style={{ fontSize: "20px", boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.3)" }}
+            >
+            100
+            </button>
         </div>
-            <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}>
-                <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
-                    <button onClick={() => handleMyCowSubmit(25)}>25</button>
-                </div>
-                <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
-                    <button onClick={() => handleMyCowSubmit(50)}>50</button>
-                </div>
-                <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
-                    <button onClick={() => handleMyCowSubmit(100)}>100</button>
-                </div>
-            </div>
         </div>
         </div>
         </Modal> 

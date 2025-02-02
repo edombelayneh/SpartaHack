@@ -49,7 +49,7 @@ const Vehicle: React.FC<VehicleProps> = ({ cowNum }) => {
     router.push(`/profile/`); // Navigate to profile page with player's ID
   };
 
-  if (cowNum === 2) {
+  if (cowNum === 1 || cowNum === 2) {
     return (
       <div style={{ overflow: "hidden", margin: 0, padding: 0 }} id="carId">
         {/* Car */}
