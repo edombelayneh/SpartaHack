@@ -1,9 +1,18 @@
 "use client";
+import { useRouter } from "next/navigation";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import PersonIcon from "@mui/icons-material/Person";
 import Image from "next/image";
 
 export default function Home() {
+  const router = useRouter();
+
+  // Navigate to profile page
+  const redirectProfile = () => {
+    router.push("/profile"); // Ensure you have a /profile route
+  };
+
   return (
     <div className="relative min-h-screen bg-gray-900 flex flex-col items-center justify-center">
       {/* Settings Icon in Top-Right Corner */}
@@ -20,6 +29,12 @@ export default function Home() {
           height={480} // Adjust size as needed
           style={{ transform: 'rotate(270deg)', display: 'block', margin: 'auto', width: '100%', height: '100%' }}
           className="object-contain"
+        />
+
+        {/* Clickable Profile Icon */}
+        <PersonIcon
+          className="ml-4 text-white text-4xl cursor-pointer hover:text-gray-400 transition"
+          onClick={redirectProfile}
         />
       </div>
       
