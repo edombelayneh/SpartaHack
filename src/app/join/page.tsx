@@ -9,21 +9,9 @@ export default function Join() {
   const joinGameMutation = useMutation(api.functions.joinGame);
   const [gameCode, setGameCode] = useState("");
   const [playerName, setPlayerName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  //   const [avatar, setAvatar] = useState("");
   const [message, setMessage] = useState("");
-
-  //   const joinTrip = () => {
-  //     if (joinCode.trim() !== "" && name.trim() !== "") {
-  //       alert(
-  //         `Joining road trip with code: ${joinCode} and Creating new user with name: ${name}`
-  //       );
-  //       console.log(`Here is the join code: ${joinCode}`);
-  //       console.log(`Here is the name: ${name}`);
-  //       redirect("/home");
-  //     } else {
-  //       alert("Please fill in both fields!");
-  //     }
-  //   };
+  const avatar = "../../public/defaultCow.png";
 
   const handleJoinGame = async () => {
     try {
