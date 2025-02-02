@@ -49,7 +49,7 @@ export default function Create() {
       const result = await joinGameMutation({
         gameCode: newGameCode,
         playerName,
-        avatar,
+        avatar
       });
       setMessage(`You joined the game successfully!`);
     } catch (error) {
@@ -59,7 +59,18 @@ export default function Create() {
   };
 
   return (
-    <div className="flex flex-col items-center p-10">
+    <div className="flex flex-col items-center p-10"
+        style={{
+          height: "100vh",
+          width: "100vw",
+          margin: 0,
+          padding: 0,
+          overflow: "hidden",
+          backgroundImage: "url('/CowWave.png')",
+          backgroundSize: "100% 100%",
+        }}
+        id="createPage"
+      >
       <input
         type="text"
         placeholder="Enter Your Name"
