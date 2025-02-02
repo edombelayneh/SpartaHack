@@ -4,7 +4,8 @@
 // // once a icon is clicked, it runs a function to update the user's cow count and then display a text message about the update
 // // after 5 seconds, the text message will disappear and the user can interact with the icons again
 
-import { Icon } from "@mui/material";
+
+import { Icon, Modal } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { api } from "../../../../convex/_generated/api";
 import { useQuery, useMutation } from "convex/react"; // ✅ Import `useMutation`
@@ -12,6 +13,8 @@ import { usePlayerId } from "../../playerId-context-provider";
 
 const MyCows: React.FC = () => {
   const [message, setMessage] = useState<string | null>(null);
+  const [isMyCowsModalOpen, setIsMyCowsModalOpen] = useState(false);
+//   const [isWheelsModalOpen, setIsWheelssModalOpen] = useState(false);
   const { playerId } = usePlayerId();
 
   // ✅ Fetch player data
@@ -30,7 +33,18 @@ const MyCows: React.FC = () => {
     console.log("Fetched player:", fetchedPlayer);
   }, [fetchedPlayer]);
 
-  const handleMyCowClick = async () => {
+
+  const handleMyCowClick = () => {
+    setIsMyCowsModalOpen(true);
+    console.log("My Cows clicked. Open modal");
+  };
+
+
+
+  const handleMyCowSubmit = async (selectedCowsNumber: number) => {
+    console.log("submitted", selectedCowsNumber);
+    setIsMyCowsModalOpen(false);
+
     if (!fetchedPlayer) {
       console.log("Player not found");
       return;
@@ -40,7 +54,7 @@ const MyCows: React.FC = () => {
       // ✅ Call mutation to update cow count
       const result = await updateCowCountMutation({
         playerId: fetchedPlayer._id,
-        cowCountChange: fetchedPlayer.cows + 1,
+        cowCountChange: fetchedPlayer.cows + selectedCowsNumber,
       });
 
       // ✅ Update UI with new cow count
@@ -55,6 +69,10 @@ const MyCows: React.FC = () => {
       console.error("Failed to update cow count:", error);
       setMessage("Error updating cow count");
     }
+    finally{
+        selectedCowsNumber = 0;
+    }
+
   };
 
   const handleMcDonaldsClick = async () => {
@@ -281,6 +299,80 @@ const MyCows: React.FC = () => {
           </div>
         </div>
       )}
+      <Modal
+        id="myCowsModal"
+        open={isMyCowsModalOpen}
+        onClose={() => setIsMyCowsModalOpen(false)}
+        style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: "8px",
+              textAlign: "center",
+              maxHeight: "70vh",
+              overflowY: "auto",
+              paddingLeft: "30px",
+              paddingRight: "30px",
+              margin: "20px",
+            }}
+          >
+            <div>
+        <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}>
+            <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
+                <button onClick={() => handleMyCowSubmit(5)}>5</button>
+            </div>
+            <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
+                <button onClick={() => handleMyCowSubmit(10)}>10</button>
+            </div>
+            <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
+                <button onClick={() => handleMyCowSubmit(15)}>15</button>
+            </div>
+        </div>
+            <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}>
+                <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
+                    <button onClick={() => handleMyCowSubmit(25)}>25</button>
+                </div>
+                <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
+                    <button onClick={() => handleMyCowSubmit(50)}>50</button>
+                </div>
+                <div style={{ flex: "1 1 33%", display: "flex", justifyContent: "center" }}>
+                    <button onClick={() => handleMyCowSubmit(100)}>100</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        </Modal> 
+        {/* end of myCowsModal */}
+        {/* <Modal 
+        id="wheelsModal"
+        open={isWheelsModalOpen} 
+        onClose={() => setIsWheelssModalOpen(false)}
+        style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: "8px",
+              textAlign: "center",
+              maxHeight: "70vh",
+              overflowY: "auto",
+              paddingLeft: "30px",
+              paddingRight: "30px",
+              margin: "20px",
+            }}
+          > 
+          <div></div>       
+          </div>
+        </Modal> */}
     </div>
   );
 };
