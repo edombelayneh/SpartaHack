@@ -2,6 +2,7 @@
 
 import { query } from "./_generated/server";
 import { Id } from "./_generated/dataModel";
+import { v } from "convex/values";
 
 export const getPlayerCount = query(
   async ({ db }, { gameCode }: { gameCode: string }) => {
@@ -64,3 +65,26 @@ export const getPlayerById = query(
     return player || null;
   }
 );
+
+export const getLeaderboard = query({
+  args: {},
+  handler: async (ctx) => {
+    // Fetch all players from the playerTable
+    const players = await ctx.db.query("playerTable").collect();
+
+    // Sort players based on total score formula
+    const sortedPlayers = players
+      .map((player) => ({
+        id: player._id,
+        name: player.name,
+        avatar: player.avatar || "/default-avatar.png",
+        cows: player.cows || 0,
+        burgers: player.burgers || 0,
+        roadPoints: player.roadPoints || 0,
+        totalScore: (player.roadPoints || 0) * 5 + (player.burgers || 0),
+      }))
+      .sort((a, b) => b.totalScore - a.totalScore); // Sort in descending order
+
+    return sortedPlayers;
+  },
+});
