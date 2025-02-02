@@ -142,14 +142,16 @@ const ProfilePage: React.FC = () => {
         <div
           style={{
             backgroundColor: "white",
-
             borderRadius: "8px",
             textAlign: "center",
             maxHeight: "70vh",
             overflowY: "auto",
+            paddingLeft: "30px",
+            paddingRight: "30px",
+            margin: "20px", // Added margin
           }}
         >
-          <h2>Game Rules</h2>
+          <h1>Game Rules</h1>
             <h3>My Cows Rules</h3>
             <h4>"My Cows!"</h4>
             <p>When a player sees a field of cows and exclaims "my cows!", said player gets an estimation of the number of cows in that field.</p>
