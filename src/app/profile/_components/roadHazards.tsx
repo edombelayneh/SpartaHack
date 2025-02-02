@@ -12,13 +12,11 @@ const RoadHazards: React.FC = () => {
   const [isCrossingOpen, setIsCrossingOpen] = useState(false);
   const { playerId } = usePlayerId();
 
-  // ✅ Fetch player data
   const fetchedPlayer = useQuery(
     api.secondaryFunctions.getPlayerById,
     playerId ? { playerId } : "skip"
   );
 
-  // ✅ Mutation hook for updating cows
   const roadPointChangeMutation = useMutation(api.functions.updateRoadPoints);
 
   useEffect(() => {
@@ -62,72 +60,231 @@ const RoadHazards: React.FC = () => {
       setMessage(null);
     }, 5000);
   };
-  const handleBearCrossingClick = () => {
+  const handleBearCrossingClick = async () => {
     handleCloseCrossing();
-    //plus 10 points
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
+
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 10,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
-  const handleFarmCrossingClick = () => {
+  const handleFarmCrossingClick = async () => {
     handleCloseCrossing();
-    //plus 5 points
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
+
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 5,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
-  const handleTruckCrossingClick = () => {
+  const handleTruckCrossingClick = async () => {
     handleCloseCrossing();
-    //plus 3 points
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
+
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 3,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
-  const handleSnowmobileCrossingClick = () => {
+  const handleSnowmobileCrossingClick = async () => {
     handleCloseCrossing();
-    //plus 5 points
+    setIsCrossingOpen(true);
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
+
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 5,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
 
-  const handleCurveClick = () => {
-    setPointCount(pointCount + 2);
-    setMessage(`You have updated your point count to ${pointCount} for Curve`);
+  const handleCurveClick = async () => {
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
 
-    setTimeout(() => {
-      setMessage(null);
-    }, 5000);
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 2,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
 
-  const handleSlipperyClick = () => {
-    setPointCount(pointCount + 5);
-    setMessage(
-      `You have updated your point count to ${pointCount} for Slippery`
-    );
+  const handleSlipperyClick = async () => {
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
 
-    setTimeout(() => {
-      setMessage(null);
-    }, 5000);
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 5,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
 
-  const handleHillClick = () => {
-    setPointCount(pointCount + 10);
-    setMessage(`You have updated your point count to ${pointCount} for Hill`);
+  const handleHillClick = async () => {
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
 
-    setTimeout(() => {
-      setMessage(null);
-    }, 5000);
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 10,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
 
-  const handleRoadworkClick = () => {
-    setPointCount(pointCount + 4);
-    setMessage(
-      `You have updated your point count to ${pointCount} for Roadwork`
-    );
+  const handleRoadworkClick = async () => {
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
 
-    setTimeout(() => {
-      setMessage(null);
-    }, 5000);
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 4,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
 
-  const handleRockfallClick = () => {
-    setPointCount(pointCount + 15);
-    setMessage(
-      `You have updated your point count to ${pointCount} for Rockfall`
-    );
+  const handleRockfallClick = async () => {
+    if (!fetchedPlayer) {
+      console.log("Player not found");
+      return;
+    }
 
-    setTimeout(() => {
-      setMessage(null);
-    }, 5000);
+    try {
+      const result = await roadPointChangeMutation({
+        playerId: fetchedPlayer._id,
+        pointChange: fetchedPlayer.roadPoints + 15,
+      });
+
+      setMessage(
+        `You have updated your point count to ${result.roadPointsCount} for Crossing`
+      );
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    } catch (error) {
+      console.error("Failed to update point count:", error);
+      setMessage("Error updating point count");
+    }
   };
 
   const handleCloseCrossing = () => {

@@ -13,8 +13,8 @@ export default function Create() {
   const [playerName, setPlayerName] = useState("");
   const [gameCode, setGameCode] = useState("");
   const [message, setMessage] = useState("");
-  const [inGame, setInGame] = useState(false);
-  const avatar = "../../public/defaultCow.png";
+  const avatar = "/BrownCow.png";
+
   const router = useRouter();
   const redirectProfile = (): void => {
     router.push("/home");
@@ -51,9 +51,7 @@ export default function Create() {
         playerName,
         avatar
       });
-      setMessage(`Joined game successfully! Player ID: ${result.playerId}`);
-      setInGame(true);
-      console.log("InGame state updated:", inGame);
+      setMessage(`You joined the game successfully!`);
     } catch (error) {
       console.error(error);
       setMessage(`Error joining game:`);
@@ -61,7 +59,18 @@ export default function Create() {
   };
 
   return (
-    <div className="flex flex-col items-center p-10">
+    <div className="flex flex-col items-center p-10"
+        style={{
+          height: "100vh",
+          width: "100vw",
+          margin: 0,
+          padding: 0,
+          overflow: "hidden",
+          backgroundImage: "url('/CowWave.png')",
+          backgroundSize: "100% 100%",
+        }}
+        id="createPage"
+      >
       <input
         type="text"
         placeholder="Enter Your Name"
@@ -79,14 +88,12 @@ export default function Create() {
         <p className="mt-4 text-lg font-bold">Game Code: {gameCode}</p>
       )}
       {message && <p className="mt-4">{message}</p>}
-      {inGame && (
-        <Button
-          onClick={redirectProfile}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-        >
-          Continue to Game
-        </Button>
-      )}
+      <Button
+        onClick={redirectProfile}
+        className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+      >
+        Continue to Game
+      </Button>
     </div>
   );
 }

@@ -2,16 +2,40 @@
 
 "use client";
 import { useRouter } from "next/navigation";
-import SettingsIcon from "@mui/icons-material/Settings";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import Vehicle from "./components/Vehicle";
+import { useGameCode } from "../game-context-provider";
+import { Button } from "@mui/material";
+
+// Component to display current game code
+const CurrentCode: React.FC = () => {
+  const { gameCode } = useGameCode();
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "5%",
+        left: "20%",
+        transform: "translate(-50%, -50%)",
+        fontSize: "12px",
+        fontWeight: "bold",
+        color: "white",
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        padding: "8px 16px",
+        borderRadius: "8px",
+      }}
+    >
+      {gameCode ? `Game Code: ${gameCode}` : "No Game Code"}
+    </div>
+  );
+};
 
 const Home: React.FC = () => {
   const router = useRouter();
   
   // Navigate to profile page
-  const redirectProfile = (): void => {
-    router.push("/profile");
+  const redirectEndPage = () => {
+    router.push("/endPage");
   };
 
   return (
@@ -28,41 +52,35 @@ const Home: React.FC = () => {
         }}
         id="homePage"
       >
+        {/* Display the Game Code at the Center-Top */}
+        <CurrentCode />
+
+        {/* Vehicle */}
+        <Vehicle cowNum={2} />
+
         {/* Button on the center to end game */}
         <div
           style={{
             position: "absolute",
-            top: "5%",
-            left: "48%",
+            top: "85%",
+            left: "50%",
             transform: "translate(-50%, -50%)",
             zIndex: 1,
             cursor: "pointer",
           }}
         >
-          <button
+          <Button
             style={{
-              backgroundColor: "Red",
+              backgroundColor: "red",
               border: "none",
               cursor: "pointer",
+              color: "black",
             }}
-            onClick={() => router.push("/endgame")}
+            onClick={redirectEndPage}
           >
             End Game
-          </button>
+          </Button>
         </div>
-
-        {/* Vehicle */}
-        <Vehicle cowNum={2} />
-
-        {/* Settings Icon in Top-Right Corner */}
-        <span className="absolute top-5 right-5">
-          <SettingsIcon className="text-black text-3xl cursor-pointer hover:text-gray-400 transition" />
-        </span>
-
-        {/* Leaderboard Button in Bottom-Right Corner */}
-        <span className="absolute bottom-5 right-5">
-          <LeaderboardIcon className="text-black text-4xl cursor-pointer hover:text-gray-400 transition" />
-        </span>
       </div>
     </div>
   );
