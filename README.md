@@ -1,8 +1,8 @@
-Inspiration
+##Inspiration
 
 After spending too much time on our phones during roadtrips, my friends and I learned of a game, played by voice and with a piece of paper, that has passengers compete for who can have the most "cows" at the end of a roadtrip. The issue is keeping track of the score. Passing around a piece of paper and doing math on a calculator in quick succession is no fun. That's why we created this website for players to join and share a game, and from there they can use quick actions to add to their score. In addition, we added an element of the game to have players taking special attention to road safety. We added in the element of scoring different road hazard signs. That way, drivers and passengers pay attention to road signs that may have blended in with the many along their route. See more details on what players look for below.
 
-What it does
+##What it does
 
 Our mobile based website keeps people engaged on the road. It promotes observing your surroundings as you search for the below objectives: The Cow Game
 
